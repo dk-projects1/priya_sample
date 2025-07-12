@@ -155,5 +155,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ Required for collects
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
