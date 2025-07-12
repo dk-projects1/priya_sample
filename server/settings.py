@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'jewellery_booking',  # Replace with your desired database name
         'CLIENT': {
-            'host': 'os.environ.get("MONGO_URI")',
+            'host': 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
             'authSource': 'admin',
             'authMechanism': 'SCRAM-SHA-1',
         }
