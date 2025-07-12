@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'jewellery_booking',  # Replace with your desired database name
+        'NAME': 'jewellery_booking',
         'CLIENT': {
-            'host': os.environ.get('MONGO_URI')
+            'host': os.environ.get('MONGO_URI', 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/jewellery_booking?retryWrites=true&w=majority'),
             'authSource': 'admin',
             'authMechanism': 'SCRAM-SHA-1',
         }
