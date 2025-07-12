@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>p Admin dashboard</title>
+    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?export=view&id=1GWzkN0aw5_A_mlquTIkawtXfIltbyaUy">
+    <style>
+body {
+            font-family: Arial, sans-serif;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hi Admin!</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br>
+        <label for="title">Description:</label>
+        <input type="text" id="title" name="Description" required><br>
+        <label for="img">Image:</label>
+        <input type="file" id="myfile" name="link" accept="image/*" required><br>
+        <label for="date">Price:</label>
+        <input type="text" id="capacity" name="price" required><br>
+        <input type="submit" value="Create post">
+    </form>
+
+    <h2>All Posts:</h2>
+    <table>
+        <tr>
+            <th>SI No.</th>
+            <th>Primary key</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Changes</th>
+        </tr>
+        {% for post in all_posts %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ post.pk }}</td>
+            <td>{{ post.title }}</td>
+            <td><img src="data:image/png;base64,{{ post.image }}" alt="Post Image"></td>
+            <td>{{ post.price }}</td>
+            <td>
+                <a href="{% url 'edit_post' post.pk %}">Edit</a>
+                <a href="{% url 'delete_post' post.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+
+</html>

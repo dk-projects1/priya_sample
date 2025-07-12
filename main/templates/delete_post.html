@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Post</title>
+    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?export=view&id=1GWzkN0aw5_A_mlquTIkawtXfIltbyaUy">
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Post</h1>
+    <p>Are you sure you want to delete the following post?</p>
+    <p>Title: {{ post.title }}</p>
+    <p>Image: <img src="data:image/png;base64,{{ post.image }}"></p>
+    <p>Price: {{ post.price }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+    </form>
+
+    <a href="{% url 'admin' %}">Cancel</a>
+</body>
+</html>

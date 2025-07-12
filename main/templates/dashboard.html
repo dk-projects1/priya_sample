@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?export=view&id=1GWzkN0aw5_A_mlquTIkawtXfIltbyaUy">
+    <style>
+                img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 10%;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome {{ name }}</h1>
+    <p>Your mail ID is : {{ email }}</p>
+    
+    <h2>All Posts:</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Changes</th>
+        </tr>
+        {% for post in all_posts %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td><img src="{{ url }}{{ post.image }}" alt="Post Image"></td>
+            <td>{{ post.date }}</td>
+            <td>{{ post.time }}</td>
+            <td>{{ post.location }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome {{ name }}</h1>
+    <p>Your mail ID is : {{ email }}</p>
+     Display user data or other dashboard content here 
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html> -->
