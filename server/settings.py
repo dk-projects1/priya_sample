@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l(ti)ytvf%vuw3d@w+vetsj=+42xx93)$er!l2d6&jvm3$#$ms'
+SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'jewellery_booking',  # Replace with your desired database name
         'CLIENT': {
-            'host': 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
+            'host': 'os.environ.get("MONGO_URI")',
             'authSource': 'admin',
             'authMechanism': 'SCRAM-SHA-1',
         }
