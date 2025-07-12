@@ -83,12 +83,25 @@ WSGI_APPLICATION = 'server.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'jewellery_booking',  # Replace with your desired database name
+#         'CLIENT': {
+#             'host': 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
+#             'authSource': 'admin',
+#             'authMechanism': 'SCRAM-SHA-1',
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'jewellery_booking',  # Replace with your desired database name
+        'NAME': 'jewellery_booking',
+        'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
+            'host': os.environ.get("MONGO_URI", "mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/jewellery_booking?retryWrites=true&w=majority"),
             'authSource': 'admin',
             'authMechanism': 'SCRAM-SHA-1',
         }
