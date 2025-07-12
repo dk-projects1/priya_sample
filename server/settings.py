@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l(ti)ytvf%vuw3d@w+vetsj=+42xx93)$er!l2d6&jvm3$#$ms'
+# SECRET_KEY = 'django-insecure-l(ti)ytvf%vuw3d@w+vetsj=+42xx93)$er!l2d6&jvm3$#$ms'
+
+SECRET_KEY = os.environ.get('DJANGO_SETTINGS_MODULE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,30 +85,32 @@ WSGI_APPLICATION = 'server.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'jewellery_booking',  # Replace with your desired database name
-#         'CLIENT': {
-#             'host': 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
-#             'authSource': 'admin',
-#             'authMechanism': 'SCRAM-SHA-1',
-#         }
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'jewellery_booking',
-        'ENFORCE_SCHEMA': False,
+        'NAME': 'jewellery_booking',  # Replace with your desired database name
         'CLIENT': {
-            'host': os.environ.get("MONGO_URI", "mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/jewellery_booking?retryWrites=true&w=majority"),
+            'host': os.environ.get('MONGO_URI')
             'authSource': 'admin',
             'authMechanism': 'SCRAM-SHA-1',
         }
     }
 }
+
+# 'mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/test?retryWrites=true',
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'jewellery_booking',
+#         'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': os.environ.get("MONGO_URI", "mongodb+srv://devaprojects66:123@cluster0.lg2mtcu.mongodb.net/jewellery_booking?retryWrites=true&w=majority"),
+#             'authSource': 'admin',
+#             'authMechanism': 'SCRAM-SHA-1',
+#         }
+#     }
+# }
 
 
 # Password validation
